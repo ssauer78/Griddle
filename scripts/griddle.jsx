@@ -448,6 +448,15 @@ var Griddle = React.createClass({
         }
 
     },
+    componentWillUpdate: function componentWillUpdate(nextProps, nextState) {
+      if(nextProps.metadataColumns !== this.props.metadataColumns) {
+        // update column settings
+        this.columnSettings = new ColumnProperties(
+          nextProps.results.length > 0 ? deep.keys(nextProps.results[0]) : [],
+          nextProps.columns, nextProps.childrenColumnName,
+          nextProps.columnMetadata, nextProps.metadataColumns);
+      }
+    },
     //todo: clean these verify methods up
     verifyExternal: function(){
         if(this.props.useExternal === true){
