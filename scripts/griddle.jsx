@@ -129,9 +129,9 @@ var Griddle = React.createClass({
             "settingsIconComponent": "",
             "nextIconComponent": "",
             "previousIconComponent":"",
-			"isMultipleSelection": false, //currently does not support subgrids
+			      "isMultipleSelection": false, //currently does not support subgrids
             "selectedRowIds": [],
-			"uniqueIdentifier": "id"
+			      "uniqueIdentifier": "id"
         };
     },
     propTypes: {
@@ -645,30 +645,30 @@ var Griddle = React.createClass({
 
 		return this.state.isSelectAllChecked;
 	},
-    _getAreAllRowsChecked: function (selectedRowIds, visibleRowIds) {
+  _getAreAllRowsChecked: function (selectedRowIds, visibleRowIds) {
 
-        var i, isFound;
+      var i, isFound;
 
-        if(selectedRowIds.length !== visibleRowIds.length) {
-            return false;
-        }
+      if(selectedRowIds.length !== visibleRowIds.length) {
+          return false;
+      }
 
-        for(i = 0; i < selectedRowIds.length; i++) {
-            isFound = find(visibleRowIds, function (visibleRowId) {
-                return selectedRowIds[i] === visibleRowId;
-            });
+      for(i = 0; i < selectedRowIds.length; i++) {
+          isFound = find(visibleRowIds, function (visibleRowId) {
+              return selectedRowIds[i] === visibleRowId;
+          });
 
-            if(isFound === undefined) {
-                return false;
-            }
-        }
+          if(isFound === undefined) {
+              return false;
+          }
+      }
 
-        return true;
-    },
-    _getIsRowChecked: function (row) {
+      return true;
+  },
+  _getIsRowChecked: function (row) {
 
-        return this.state.selectedRowIds.indexOf(row[this.props.uniqueIdentifier]) > -1 ? true : false;
-    },
+      return this.state.selectedRowIds.indexOf(row[this.props.uniqueIdentifier]) > -1 ? true : false;
+  },
 	getSelectedRowIds: function () {
 
 		return this.state.selectedRowIds;

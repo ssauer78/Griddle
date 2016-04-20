@@ -254,7 +254,7 @@ var GridTable = React.createClass({
       nodes = <tbody>{nodes}</tbody>
     }
 
-    var pagingContent = <tbody />;
+    var pagingContent = <div />;
     if(this.props.showPager){
       var pagingStyles = this.props.useGriddleStyles ?
         {
@@ -265,11 +265,9 @@ var GridTable = React.createClass({
           height: this.props.showNoData ? "20px" : null
         }
         : null;
-      pagingContent = (<tbody><tr>
-          <td colSpan={this.props.multipleSelectionSettings.isMultipleSelection ? this.props.columnSettings.getVisibleColumnCount() + 1 : this.props.columnSettings.getVisibleColumnCount()} style={pagingStyles} className="footer-container">
-            {!this.props.showNoData ? this.props.pagingContent : null}
-          </td>
-        </tr></tbody>)
+      pagingContent = <div>
+        {!this.props.showNoData ? this.props.pagingContent : null}
+      </div>;
     }
 
     // If we have a fixed header, split into two tables.
@@ -286,8 +284,8 @@ var GridTable = React.createClass({
                 <table className={this.props.className} style={(this.props.useGriddleStyles&&tableStyle)||null}>
                     {nodes}
                     {loadingContent}
-                    {pagingContent}
                 </table>
+                {pagingContent}
               </div>
             </div>;
     }
@@ -297,8 +295,8 @@ var GridTable = React.createClass({
                   {tableHeading}
                   {nodes}
                   {loadingContent}
-                  {pagingContent}
               </table>
+              {pagingContent}
             </div>
     }
 });
