@@ -228,9 +228,9 @@ var GridTable = React.createClass({
           textAlign: "center",
           paddingBottom: "40px"
         };
-
-        defaultColSpan = this.props.columnSettings.getVisibleColumnCount();
       }
+      // this should not only be set if useGriddleStyles is set
+      defaultColSpan = this.props.columnSettings.getVisibleColumnCount();
 
       var loadingComponent = this.props.externalLoadingComponent ?
         (<this.props.externalLoadingComponent/>) :
