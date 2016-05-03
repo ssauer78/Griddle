@@ -64,7 +64,6 @@ class ColumnProperties{
     var filteredColumns = this.filteredColumns.length === 0 ? this.allColumns : this.filteredColumns;
 
     filteredColumns = difference(filteredColumns, this.metadataColumns);
-
     filteredColumns = this.orderColumns(filteredColumns);
 
     return filteredColumns;

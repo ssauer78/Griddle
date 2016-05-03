@@ -414,9 +414,17 @@ var Griddle = React.createClass({
         this.verifyExternal();
         this.verifyCustom();
 
+        let settings = localStorage.getItem('griddleSettings_' + this.props.uniqueIdentifier);
+        let columns = [];
+        if (settings) {
+          columns = settings.split(',');
+        }
+        if (columns.length <= 0) {
+          columns = this.props.columns;
+        }
         this.columnSettings = new ColumnProperties(
             this.props.results.length > 0 ? deep.keys(this.props.results[0]) : [],
-            this.props.columns,
+            columns,
             this.props.childrenColumnName,
             this.props.columnMetadata,
             this.props.metadataColumns
@@ -451,9 +459,17 @@ var Griddle = React.createClass({
     componentWillUpdate: function componentWillUpdate(nextProps, nextState) {
       if(nextProps.metadataColumns !== this.props.metadataColumns) {
         // update column settings
+        let settings = localStorage.getItem('griddleSettings_' + this.props.uniqueIdentifier);
+        let columns = [];
+        if (settings) {
+          columns = settings.split(',');
+        }
+        if (columns.length <= 0) {
+          columns = this.props.columns;
+        }
         this.columnSettings = new ColumnProperties(
           nextProps.results.length > 0 ? deep.keys(nextProps.results[0]) : [],
-          nextProps.columns, nextProps.childrenColumnName,
+          columns, nextProps.childrenColumnName,
           nextProps.columnMetadata, nextProps.metadataColumns);
       }
     },
@@ -786,7 +802,8 @@ var Griddle = React.createClass({
              settingsIconComponent={this.props.settingsIconComponent} maxRowsText={this.props.maxRowsText} setPageSize={this.setPageSize}
              showSetPageSize={!this.shouldUseCustomGridComponent()} resultsPerPage={this.state.resultsPerPage} enableToggleCustom={this.props.enableToggleCustom}
              toggleCustomComponent={this.toggleCustomComponent} useCustomComponent={this.shouldUseCustomRowComponent() || this.shouldUseCustomGridComponent()}
-             useGriddleStyles={this.props.useGriddleStyles} enableCustomFormatText={this.props.enableCustomFormatText} columnMetadata={this.props.columnMetadata} />
+             useGriddleStyles={this.props.useGriddleStyles} enableCustomFormatText={this.props.enableCustomFormatText} columnMetadata={this.props.columnMetadata}
+             uniqueIdentifier={this.props.uniqueIdentifier} />
         ) : "";
     },
     getCustomGridSection: function(){

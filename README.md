@@ -5,7 +5,7 @@ This is  a fork of the [Griddle table](https://github.com/GriddleGriddle/Griddle
 
 Griddle is a simple grid Component for use with React. It depends on [Lodash Modules](https://lodash.com/) and [React](http://facebook.github.io/react/).
 
-Please check out the [documentation and examples](http://dynamictyped.github.io/Griddle).
+Please check out the original [documentation and examples](http://dynamictyped.github.io/Griddle).
 
 I did some changes that where needed for our use.
 

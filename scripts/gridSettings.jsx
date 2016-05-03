@@ -18,8 +18,21 @@ var GridSettings = React.createClass({
             "enableToggleCustom": false,
             "useCustomComponent": false,
             "useGriddleStyles": true,
-            "toggleCustomComponent": function(){}
+            "toggleCustomComponent": function(){},
+            "uniqueIdentifier": 'id'
         };
+    },
+    checkStorage: function () { // check if the localStorage exists
+      var uid = new Date().toString();
+      var storage;
+      var result;
+      try {
+        (storage = localStorage).setItem('uid', uid);
+        result = storage.getItem('uid') === uid;
+        storage.removeItem('uid');
+        return result && storage;
+      } catch (exception) {}
+      return false;
     },
     setPageSize: function(event){
         var value = parseInt(event.target.value, 10);
@@ -30,9 +43,17 @@ var GridSettings = React.createClass({
         if(event.target.checked === true && includes(this.props.selectedColumns, columnName) === false){
             this.props.selectedColumns.push(columnName);
             this.props.setColumns(this.props.selectedColumns);
+            // store the selected columns in the local storage
+            if (this.checkStorage()) {
+              localStorage.setItem('griddleSettings_' + this.props.uniqueIdentifier, this.props.selectedColumns);
+            }
         } else {
             /* redraw with the selected columns minus the one just unchecked */
             this.props.setColumns(without(this.props.selectedColumns, columnName));
+            // store the selected columns in the local storage
+            if (this.checkStorage()) {
+              localStorage.setItem('griddleSettings_' + this.props.uniqueIdentifier, without(this.props.selectedColumns, columnName));
+            }
         }
     },
     render: function(){
