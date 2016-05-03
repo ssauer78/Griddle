@@ -795,7 +795,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    },
 	    getFilter: function getFilter() {
-	        return this.props.showFilter && this.shouldUseCustomGridComponent() === false ? this.props.useCustomFilterComponent ? React.createElement(CustomFilterContainer, { changeFilter: this.setFilter, placeholderText: this.props.filterPlaceholderText, customFilterComponent: this.props.customFilterComponent, results: this.props.results, currentResults: this.getCurrentResults() }) : React.createElement(GridFilter, { changeFilter: this.setFilter, placeholderText: this.props.filterPlaceholderText }) : "";
+	        return this.props.showFilter && this.shouldUseCustomGridComponent() === false ? this.props.useCustomFilterComponent ? React.createElement(CustomFilterContainer, { changeFilter: this.setFilter, placeholderText: this.props.filterPlaceholderText,
+	            customFilterComponent: this.props.customFilterComponent, results: this.props.results,
+	            currentResults: this.getCurrentResults(), uniqueIdentifier: this.props.uniqueIdentifier }) : React.createElement(GridFilter, { changeFilter: this.setFilter, placeholderText: this.props.filterPlaceholderText }) : "";
 	    },
 	    getSettings: function getSettings() {
 	        return this.props.showSettings ? React.createElement('button', { type: 'button', className: this.props.settingsToggleClassName, onClick: this.toggleColumnChooser,
@@ -11810,7 +11812,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      "placeholderText": ""
+	      "placeholderText": "",
+	      "uniqueIdentifier": "id"
 	    };
 	  },
 	  render: function render() {
@@ -11825,7 +11828,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      changeFilter: this.props.changeFilter,
 	      results: this.props.results,
 	      currentResults: this.props.currentResults,
-	      placeholderText: this.props.placeholderText });
+	      placeholderText: this.props.placeholderText,
+	      uniqueIdentifier: this.props.uniqueIdentifier
+	    });
 	  }
 	});
 

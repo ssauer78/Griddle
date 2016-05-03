@@ -6,7 +6,8 @@ var React = require('react');
 var CustomFilterContainer = React.createClass({
   getDefaultProps: function(){
     return {
-      "placeholderText": ""
+      "placeholderText": "",
+      "uniqueIdentifier": "id"
     }
   },
   render: function(){
@@ -21,7 +22,9 @@ var CustomFilterContainer = React.createClass({
         changeFilter={this.props.changeFilter}
         results={this.props.results}
         currentResults={this.props.currentResults}
-        placeholderText={this.props.placeholderText} />;
+        placeholderText={this.props.placeholderText}
+        uniqueIdentifier={this.props.uniqueIdentifier}
+      />;
   }
 });
 
