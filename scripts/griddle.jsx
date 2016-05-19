@@ -465,7 +465,7 @@ var Griddle = React.createClass({
           columns = settings.split(',');
         }
         if (columns.length <= 0) {
-          columns = this.props.columns;
+          columns = nextProps.columns;
         }
         this.columnSettings = new ColumnProperties(
           nextProps.results.length > 0 ? deep.keys(nextProps.results[0]) : [],

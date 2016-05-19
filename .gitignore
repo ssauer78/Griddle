@@ -33,3 +33,4 @@ docs/html
 .node-version
 
 .idea
+.DS_STORE

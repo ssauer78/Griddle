@@ -265,6 +265,12 @@ var GridTable = React.createClass({
           height: this.props.showNoData ? "20px" : null
         }
         : null;
+      /* pagingContent = (<tbody><tr>
+          <td colSpan={this.props.multipleSelectionSettings.isMultipleSelection ? this.props.columnSettings.getVisibleColumnCount() + 1 : this.props.columnSettings.getVisibleColumnCount()} style={pagingStyles} className="footer-container">
+            {!this.props.showNoData ? this.props.pagingContent : null}
+          </td>
+        </tr></tbody>)
+      pagingContent = React.createElement('div', null, !this.props.showNoData ? this.props.pagingContent : null);*/
       pagingContent = <div>
         {!this.props.showNoData ? this.props.pagingContent : null}
       </div>;

@@ -517,7 +517,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                columns = settings.split(',');
 	            }
 	            if (columns.length <= 0) {
-	                columns = this.props.columns;
+	                columns = nextProps.columns;
 	            }
 	            this.columnSettings = new ColumnProperties(nextProps.results.length > 0 ? deep.keys(nextProps.results[0]) : [], columns, nextProps.childrenColumnName, nextProps.columnMetadata, nextProps.metadataColumns);
 	        }
@@ -1226,6 +1226,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        color: "#222",
 	        height: this.props.showNoData ? "20px" : null
 	      } : null;
+	      /* pagingContent = (<tbody><tr>
+	          <td colSpan={this.props.multipleSelectionSettings.isMultipleSelection ? this.props.columnSettings.getVisibleColumnCount() + 1 : this.props.columnSettings.getVisibleColumnCount()} style={pagingStyles} className="footer-container">
+	            {!this.props.showNoData ? this.props.pagingContent : null}
+	          </td>
+	        </tr></tbody>)
+	      pagingContent = React.createElement('div', null, !this.props.showNoData ? this.props.pagingContent : null);*/
 	      pagingContent = React.createElement('div', null, !this.props.showNoData ? this.props.pagingContent : null);
 	    }
 
