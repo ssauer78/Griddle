@@ -867,7 +867,9 @@ var Griddle = React.createClass({
     },
     getNoDataSection: function(){
         if (this.props.customNoDataComponent != null) {
-            return (<div className={this.props.noDataClassName}><this.props.customNoDataComponent /></div>);
+          let CustomNoDataComponent = this.props.customNoDataComponent;
+          // return (<div className={this.props.noDataClassName}><this.props.customNoDataComponent /></div>);
+          return (<div className={this.props.noDataClassName}><CustomNoDataComponent /></div>);
         }
         return (<GridNoData noDataMessage={this.props.noDataMessage} />);
     },

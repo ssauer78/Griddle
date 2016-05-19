@@ -232,9 +232,11 @@ var GridTable = React.createClass({
       // this should not only be set if useGriddleStyles is set
       defaultColSpan = this.props.columnSettings.getVisibleColumnCount();
 
-      var loadingComponent = this.props.externalLoadingComponent ?
-        (<this.props.externalLoadingComponent/>) :
-        (<div>Loading...</div>);
+      let loadingComponent = <div>Loading...</div>;
+      if (this.props.externalLoadingComponent) {
+        let ExternalLoadingComponent = this.props.externalLoadingComponent;
+        loadingComponent = <ExternalLoadingComponent />;
+      }
 
       loadingContent = (<tbody><tr><td style={defaultLoadingStyle} colSpan={defaultColSpan}>{loadingComponent}</td></tr></tbody>);
     }
